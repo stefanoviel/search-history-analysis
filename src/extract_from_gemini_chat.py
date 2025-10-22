@@ -1,3 +1,4 @@
+import os
 from bs4 import BeautifulSoup
 import pandas as pd
 import re
@@ -23,5 +24,6 @@ for cell in outer_cells:
     if len(text) < 1500:
         extracted_data.append((text, date_string))
 
-df = pd.DataFrame(extracted_data, columns=['Prompt_Text', 'Date_String'])
-df.to_csv('extracted_gemini_prompts.csv', index=False)
+
+os.makedirs('data', exist_ok=True)
+pd.DataFrame(extracted_data, columns=['text', 'timestamp']).to_csv('data/extracted_gemini_prompts.csv', index=False)

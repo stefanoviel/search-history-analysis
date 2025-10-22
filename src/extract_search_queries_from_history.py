@@ -17,7 +17,7 @@ all_search = []
 for current_entry in data['Browser History']:
     dt_object = datetime.fromtimestamp(current_entry['time_usec'] / 1_000_000)
     current_entry_with_time = {
-        'title': current_entry['title'],
+        'text': current_entry['title'],
         'timestamp': dt_object
     }
 
@@ -25,8 +25,8 @@ for current_entry in data['Browser History']:
         last_filtered_entry = filtered_searches[-1]
 
         distance = levenshtein_distance(
-            current_entry_with_time['title'].lower(),
-            last_filtered_entry['title'].lower()
+            current_entry_with_time['text'].lower(),
+            last_filtered_entry['text'].lower()
         )
 
         if distance <= max_distance: # They are similar. Replace the 'last_filtered_entry' with the 'current_entry'
