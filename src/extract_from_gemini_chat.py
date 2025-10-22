@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -18,11 +19,14 @@ for cell in outer_cells:
     if match:
         text = match.group(1).strip()
         date_string = match.group(2)
+        dt_object = datetime.strptime(date_string, "%b %d, %Y")
+        output_date_str = dt_object.strftime("%Y-%m-%d %H:%M:%S.%f")
+
     else: 
         continue    
 
     if len(text) < 1500:
-        extracted_data.append((text, date_string))
+        extracted_data.append((text, output_date_str))
 
 
 os.makedirs('data', exist_ok=True)
