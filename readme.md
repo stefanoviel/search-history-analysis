@@ -3,7 +3,7 @@
 
 The code allows you to plot the topic from you search history and the gemini chats. 
 
-You can download both of them from (Google Takeout)[https://takeout.google.com/]
+You can download both of them from [Google Takeout](https://takeout.google.com/)
 * `History.json` From Chrome data.
 * `MyActivity.html` with all you gemini chats from "My Activity" data (in the folder that gets downloaded there will be many images and file, but only one html file)
 
