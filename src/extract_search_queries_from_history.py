@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+import os
 import pandas as pd
 from Levenshtein import distance as levenshtein_distance
 
@@ -35,5 +36,5 @@ for current_entry in data['Browser History']:
     else:
         filtered_searches.append(current_entry_with_time)
 
-
-pd.DataFrame(filtered_searches).to_csv('filtered_search_queries.csv', index=False)
+os.makedirs('data', exist_ok=True)
+pd.DataFrame(filtered_searches).to_csv('data/filtered_search_queries.csv', index=False)
